@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yourapp</groupId>
+    <artifactId>ecommerce-events</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>Ecommerce Kafka Events Library</name>
+    <description>
+        Shared event contracts for all microservices in the ecommerce platform.
+        Import this as a dependency in every service that produces or consumes
+        Kafka events. NEVER define event classes inside an individual service —
+        that's how Order-service and Payment-service silently drift apart.
+    </description>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jackson.version>2.16.0</jackson.version>
+    </properties>
+
+    <!--
+        Zero Spring dependencies on purpose. This module must be plain Java
+        so it can be pulled into any service (or any non-Spring tool, like a
+        CLI debugger or a Kafka Streams app) without dragging in the entire
+        Spring context.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.12.1</version>
+                <configuration>
+                    <release>17</release>
+                    <!-- -parameters isn't strictly required for records on
+                         Jackson 2.12+, but harmless to keep for clarity in
+                         stack traces / reflection tooling. -->
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

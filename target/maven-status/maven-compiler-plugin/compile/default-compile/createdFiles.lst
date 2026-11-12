@@ -1,0 +1,5 @@
+com\yourapp\events\payment\PaymentProcessedEvent$PaymentStatus.class
+com\yourapp\events\common\DomainEvent.class
+com\yourapp\events\common\OrderItem.class
+com\yourapp\events\payment\PaymentProcessedEvent.class
+com\yourapp\events\order\OrderPlacedEvent.class

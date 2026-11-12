@@ -1,0 +1,4 @@
+D:\ecom-project\ecom-microservices\ecom-events\src\main\java\com\yourapp\events\common\DomainEvent.java
+D:\ecom-project\ecom-microservices\ecom-events\src\main\java\com\yourapp\events\common\OrderItem.java
+D:\ecom-project\ecom-microservices\ecom-events\src\main\java\com\yourapp\events\order\OrderPlacedEvent.java
+D:\ecom-project\ecom-microservices\ecom-events\src\main\java\com\yourapp\events\payment\PaymentProcessedEvent.java
